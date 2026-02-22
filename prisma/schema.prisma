@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  ADMIN
+  MANAGER
+  ENGINEER
+}
+
+enum RiskLevel {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+model User {
+  id        String     @id @default(uuid())
+  email     String     @unique
+  name      String?
+  role      UserRole   @default(ENGINEER)
+  projects  Project[]
+  createdAt DateTime   @default(now())
+}
+
+model Project {
+  id          String      @id @default(uuid())
+  name        String
+  description String?
+  ownerId     String
+  owner       User        @relation(fields: [ownerId], references: [id])
+  risks       RiskEvent[]
+  createdAt   DateTime    @default(now())
+}
+
+model RiskEvent {
+  id          String     @id @default(uuid())
+  title       String
+  description String
+  level       RiskLevel
+  projectId   String
+  project     Project    @relation(fields: [projectId], references: [id])
+  aiScore     Float?
+  createdAt   DateTime   @default(now())
+} 

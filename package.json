@@ -1,0 +1,28 @@
+{
+  "name": "wow-construction",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.4.1",
+    "dotenv": "^17.3.1",
+    "framer-motion": "^11.18.2",
+    "lucide-react": "^0.460.0",
+    "next": "14.2.0",
+    "openai": "^4.73.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.14",
+    "autoprefixer": "^10",
+    "postcss": "^8",
+    "prisma": "^7.4.1",
+    "tailwindcss": "^3",
+    "typescript": "5.9.3"
+  }
+}
