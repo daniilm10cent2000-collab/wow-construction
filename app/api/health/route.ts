@@ -4,6 +4,10 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function GET() {
-  const result = await prisma.$queryRawSELECT 1;
-  return NextResponse.json({ db: "connected", result });
+  const result = await prisma.$queryRawUnsafe("SELECT 1");
+
+  return NextResponse.json({
+    db: "connected",
+    result,
+  });
 }
